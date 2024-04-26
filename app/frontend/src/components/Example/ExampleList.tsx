@@ -2,12 +2,12 @@ import { Example } from "./Example";
 
 import styles from "./Example.module.css";
 
-const DEFAULT_EXAMPLES: string[] = ["O que é governança de dados?", "Quais são os pilares da governança de dados?", "O que faz um Data Steward?"];
+const DEFAULT_EXAMPLES: string[] = ["Qual é o prazo de validade do contrato mais recente?", "Existe alguma cláusula de rescisão ou penalidade no contrato  Nº 57/2024 ?", "Quem são as partes envolvidas no contrato  Nº 57/2024 ?"];
 
 const GPT4V_EXAMPLES: string[] = [
-    "Qual é a ordem de estudo recomendada para consultores de DG?",
-    "Qual é o valor da multa aplicada em empresas que descumprirem a GDPR?",
-    "Descreva sucintamente cada modelo de operação, listando seus prós e contras e em quais casos de uso se aplicam melhor"
+    "Existe alguma cláusula de arbitragem para resolver disputas?",
+    "O que diz o parágrafo quinto do contrato  Nº 57/2024?",
+    "Faça um resumo do contrato  Nº 57/2024"
 ];
 
 interface Props {
