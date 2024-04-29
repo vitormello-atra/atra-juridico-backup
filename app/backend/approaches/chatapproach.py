@@ -21,26 +21,29 @@ class ChatApproach(Approach, ABC):
     ASSISTANT = "assistant"
 
     query_prompt_few_shots = [
-        {"role": USER, "content": "How are consultants progressing on the data governance knowledge track?"},
-        {"role": ASSISTANT, "content": "Summarize employees' progress on the data governance knowledge track"},
-        {"role": USER, "content": "What are the pillars of data governance?"},
-        {"role": ASSISTANT, "content": "Show the pillars of data governance"},
-        {"role": USER, "content": "When was law 8.66 created?"},
-        {"role": ASSISTANT, "content": "Return the year the law was created"}
+        {"role": USER, "content": "What are the termination clauses included in the service supply contract?"},
+        {"role": ASSISTANT, "content": "List the provisions regarding termination in the service supply contract"},
+        {"role": USER, "content": "What is the current duration of the commercial lease agreement?"},
+        {"role": ASSISTANT, "content": "Provide information on the duration of the commercial lease agreement"},
+        {"role": USER, "content": "What are the specified payment requirements in the service provision contract?"},
+        {"role": ASSISTANT, "content": "Explain the payment terms set forth in the service provision contract"},
+        {"role": USER, "content": "What are the contractor's obligations regarding equipment maintenance as defined in the equipment supply contract?"},
+        {"role": ASSISTANT, "content": "Describe the contractor's responsibilities for equipment maintenance in the equipment supply contract"},
+        {"role": USER, "content": "What are the confidentiality clauses in the recently signed partnership agreement?"},
+        {"role": ASSISTANT, "content": "Identify the provisions related to confidentiality in the partnership agreement"}
     ]
     NO_RESPONSE = "0"
 
     follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
     Enclose the follow-up questions in double angle brackets. Example:
-    <<What resources are available to help me improve my performance in the data governance study track?>>
-    <<How can I track my own progress?>>
-    <<What are the requirements for successfully completing the data governance study track?>>
-    Do no repeat questions that have already been asked.
+    <<What resources are available to help me improve my knowledge of these contracts?>>
+    <<Could you elaborate on the responsibilities and obligations of each party as stated in this contract?>>
+    <<Is there a section in this contract that addresses dispute resolution?>>
     Make sure the last question ends with ">>".
     """
 
     query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
-    You have access to Azure AI Search index with 100's of documents. The documents contain data relating to data governance, monitoring of consultant studies and government contract law files
+z    You have access to Azure AI Search index with various documents. The documents are public legal contracts relating to a variety of services and agreements.
     Generate a search query based on the conversation and the new question.
     Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
     Do not include any text inside [] or <<>> in the search query terms.
