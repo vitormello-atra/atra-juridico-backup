@@ -31,6 +31,11 @@ class ChatApproach(Approach, ABC):
         {"role": ASSISTANT, "content": "Describe the contractor's responsibilities for equipment maintenance in the equipment supply contract"},
         {"role": USER, "content": "What are the confidentiality clauses in the recently signed partnership agreement?"},
         {"role": ASSISTANT, "content": "Identify the provisions related to confidentiality in the partnership agreement"}
+        {"role": USER, "content": "What is the proportion of contracts that require upfront payment?"}
+        {"role": ASSISTANT, "content": "Calculate the percentage in the database documents and respond with the percentage of those contracts"}
+
+
+
     ]
     NO_RESPONSE = "0"
 
