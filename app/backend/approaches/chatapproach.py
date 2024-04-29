@@ -30,12 +30,9 @@ class ChatApproach(Approach, ABC):
         {"role": USER, "content": "What are the contractor's obligations regarding equipment maintenance as defined in the equipment supply contract?"},
         {"role": ASSISTANT, "content": "Describe the contractor's responsibilities for equipment maintenance in the equipment supply contract"},
         {"role": USER, "content": "What are the confidentiality clauses in the recently signed partnership agreement?"},
-        {"role": ASSISTANT, "content": "Identify the provisions related to confidentiality in the partnership agreement"}
-        {"role": USER, "content": "What is the proportion of contracts that require upfront payment?"}
+        {"role": ASSISTANT, "content": "Identify the provisions related to confidentiality in the partnership agreement"},
+        {"role": USER, "content": "What is the proportion of contracts that require upfront payment?"},
         {"role": ASSISTANT, "content": "Calculate the percentage in the database documents and respond with the percentage of those contracts"}
-
-
-
     ]
     NO_RESPONSE = "0"
 
@@ -48,7 +45,7 @@ class ChatApproach(Approach, ABC):
     """
 
     query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
-z    You have access to Azure AI Search index with various documents. The documents are public legal contracts relating to a variety of services and agreements.
+    You have access to Azure AI Search index with various documents. The documents are public legal contracts relating to a variety of services and agreements.
     Generate a search query based on the conversation and the new question.
     Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
     Do not include any text inside [] or <<>> in the search query terms.

@@ -17,7 +17,7 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Atra employees with questions about data governance and their progress on Atra-provided study tracks. Be brief in your answers. "
+        "You are an intelligent assistant helping Atra employees with questions about a set of public legal contracts."
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
         + "Answer the following question using only the data provided in the sources below. "
         + "For tabular information return it as an html table. Do not return markdown format. "
@@ -27,15 +27,16 @@ class RetrieveThenReadApproach(Approach):
 
     # shots/sample conversation
     question = """
-'What is data governance?'
+'What is the mean value of these contracts?'
 
 Sources:
-info1.txt: Data governance is responsible for the operation and monitoring of data flows within a company. It is an activity that focuses the efforts of various areas on attention to data quality, security, and controls.
-info2.pdf: Data governance is the orchestration of people, policies, processes, and technology so that the company can ensure that data serves the necessary purposes for fulfilling the strategy, as well as preventing fines and legal proceedings that may occur due to mishandling of data.
-info3.pdf: Data governance is based on external factors, such as laws and regulations, but also internal factors, such as policies, standards, and processes. Another important foundation in data governance is people and applied technologies.
-info4.pdf: Data governance cannot be seen as a project. Data governance is a cyclical and continuous process. Without trained individuals and the understanding that the work needs to be constantly revisited, the activity does not yield the results that companies desire and always blame data governance for being inefficient.
+contrato1.pdf: This contract, effective from 30/11/2023 to 30/11/2024, is for services related to the receipt, storage, and final disposal of unusable tires in Sapezal-MT. The contract value is R$ 154,800.00.
+contrato2.pdf: This contract, based on Federal Law No. 14133 of April 1, is for the acquisition of items at a total cost of R$ 469,899.99. The payments for this contract will come from specific budgetary allocations.
+contrato3.pdf: This contract, which does not allow subcontracting, is for the provision of services at a total cost of R$ 663,500.00. The cost includes all direct and indirect expenses related to the execution of the contract.
+contrato4.pdf: This contract, resulting from the Waiver of Bidding No. 27/2024, is for specialized services for the preparation of reports, technical opinions in psychiatric and graphotechnic expertises. The total contract value is R$ 1,200.00. Payment will be made within 30 days of issuing the invoice.
 """
-    answer = "Data governance ensures data flows effectively, focusing on quality, security, and controls [info1.txt]. It orchestrates people, policies, processes, and technology to serve strategic purposes and prevent legal issues [info2.txt]. Based on external and internal factors, it's a continuous process requiring trained individuals [info3.txt][info4.txt]."
+
+    answer = "The mean value of the contracts is R$ 322,349.99. This is calculated by adding the total values (R$ 154,800.00, R$ 469,899.99, R$ 663,500.00, R$ 1,200.00) and dividing by the number of contracts (4). Please note that this is a simplified calculation and may not take into account other factors that could affect the mean value of the contracts. It’s always a good idea to consult with a financial advisor or accountant for more accurate calculations."
 
     def __init__(
         self,
