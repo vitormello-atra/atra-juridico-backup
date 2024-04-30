@@ -178,12 +178,17 @@ class ChatReadRetrieveReadApproach(ChatApproach):
 
         response_token_limit = 1024
         messages_token_limit = self.chatgpt_token_limit - response_token_limit
+        postprompt = "Answer using retrieved documents only, and without using your own knowledge. "
+        + "Generate citations to retrieved documents for every claim in your answer. "
+        + "If the user question cannot be answered using retrieved documents, please explain the reasoning behind why documents are relevant to user queries. "
+        + "In any case, don't answer using your own knowledge."
+        
         messages = self.get_messages_from_history(
             system_prompt=system_message,
             model_id=self.chatgpt_model,
             history=history,
             # Model does not handle lengthy system messages well. Moving sources to latest user conversation to solve follow up questions prompt.
-            user_content=original_user_query + "\n\nSources:\n" + content,
+            user_content=original_user_query + "\n\nSources:\n" + content + f"\n\n{postprompt}",
             max_tokens=messages_token_limit,
         )
 
@@ -232,7 +237,7 @@ class ChatReadRetrieveReadApproach(ChatApproach):
             # Azure OpenAI takes the deployment name as the model name
             model=self.chatgpt_deployment if self.chatgpt_deployment else self.chatgpt_model,
             messages=messages,
-            temperature=overrides.get("temperature", 0.3),
+            temperature=overrides.get("temperature", 0.0),
             max_tokens=response_token_limit,
             n=1,
             stream=should_stream,
