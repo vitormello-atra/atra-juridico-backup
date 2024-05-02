@@ -31,7 +31,6 @@ class ChatApproach(Approach, ABC):
         {"role": ASSISTANT, "content": "Identifique as provas apresentadas no caso trabalhista"},
         {"role": USER, "content": "Qual foi o resultado da apelação no caso de locação de aluguel?"},
         {"role": ASSISTANT, "content": "Informe o resultado da apelação no caso de locação de aluguel"}
-
     ]
     NO_RESPONSE = "0"
 
