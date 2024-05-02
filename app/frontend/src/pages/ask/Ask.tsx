@@ -206,7 +206,7 @@ export function Component(): JSX.Element {
                 <h1 className={styles.askTitle}>Faça uma pergunta sobre os seus dados</h1>
                 <div className={styles.askQuestionInput}>
                     <QuestionInput
-                        placeholder="Exemplo: Qual a data do ultimo contrato de termo de adesão?"
+                        placeholder="Exemplo: Qual a data da ultima Jurisprudência?"
                         disabled={isLoading}
                         initQuestion={question}
                         onSend={question => makeApiRequest(question)}

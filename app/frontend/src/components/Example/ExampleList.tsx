@@ -2,12 +2,12 @@ import { Example } from "./Example";
 
 import styles from "./Example.module.css";
 
-const DEFAULT_EXAMPLES: string[] = ["Qual é o prazo de validade do contrato mais recente?", "Existe alguma cláusula de rescisão ou penalidade no contrato 106/2024 ?", "Quem são as partes envolvidas no contrato 106/2024 ?"];
+const DEFAULT_EXAMPLES: string[] = ["Existe alguma ação onde o o locátorio foi multado?", "Existe alguma ação trabalhista que aborde insalubridade?", "Cite uma jurisprudência que trate de danos morais?"];
 
 const GPT4V_EXAMPLES: string[] = [
-    "Existe alguma cláusula de arbitragem para resolver disputas?",
-    "O que diz o parágrafo quinto do contrato 106/2024?",
-    "Faça um resumo do contrato 106/2024"
+    "Me de 3 exemplos de causas trabalhistas?",
+    "Existe alguma apelação Cível Contrato de Locação de Imóvel?",
+    "Faça um resumo da ação de registro 2024.0000380427"
 ];
 
 interface Props {

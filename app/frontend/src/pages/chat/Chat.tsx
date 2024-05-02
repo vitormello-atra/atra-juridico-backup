@@ -294,7 +294,7 @@ const Chat = () => {
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
                             <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                            <h1 className={styles.chatEmptyStateTitle}>Converse com seus contratos</h1>
+                            <h1 className={styles.chatEmptyStateTitle}>Converse com seu Histórico Jurídico</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>Pergunte qualquer coisa ou tente um exemplo</h2>
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
                         </div>
@@ -361,7 +361,7 @@ const Chat = () => {
                     <div className={styles.chatInput}>
                         <QuestionInput
                             clearOnSend
-                            placeholder="Exemplo: Liste 3 contratos de termo de adesão"
+                            placeholder="Exemplo: Mostre uma Jurisprudência que aborde multas em locações"
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                         />
