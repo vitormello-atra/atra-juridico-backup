@@ -293,7 +293,7 @@ const Chat = () => {
                 <div className={styles.chatContainer}>
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
-                            <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
+                            <SparkleFilled fontSize={"120px"} primaryFill={"rgba(94, 165, 251, 1)"} aria-hidden="true" aria-label="Chat logo" />
                             <h1 className={styles.chatEmptyStateTitle}>Converse com seu Histórico Jurídico</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>Pergunte qualquer coisa ou tente um exemplo</h2>
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
