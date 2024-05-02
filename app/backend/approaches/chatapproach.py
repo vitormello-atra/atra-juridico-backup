@@ -21,31 +21,30 @@ class ChatApproach(Approach, ABC):
     ASSISTANT = "assistant"
 
     query_prompt_few_shots = [
-        {"role": USER, "content": "What are the termination clauses included in the service supply contract?"},
-        {"role": ASSISTANT, "content": "List the provisions regarding termination in the service supply contract"},
-        {"role": USER, "content": "What is the current duration of the commercial lease agreement?"},
-        {"role": ASSISTANT, "content": "Provide information on the duration of the commercial lease agreement"},
-        {"role": USER, "content": "What are the specified payment requirements in the service provision contract?"},
-        {"role": ASSISTANT, "content": "Explain the payment terms set forth in the service provision contract"},
-        {"role": USER, "content": "What are the contractor's obligations regarding equipment maintenance as defined in the equipment supply contract?"},
-        {"role": ASSISTANT, "content": "Describe the contractor's responsibilities for equipment maintenance in the equipment supply contract"},
-        {"role": USER, "content": "What are the confidentiality clauses in the recently signed partnership agreement?"},
-        {"role": ASSISTANT, "content": "Identify the provisions related to confidentiality in the partnership agreement"},
-        {"role": USER, "content": "What is the proportion of contracts that require upfront payment?"},
-        {"role": ASSISTANT, "content": "Calculate the percentage in the database documents and respond with the percentage of those contracts"}
+        {"role": USER, "content": "Qual foi o motivo da apelação no caso de locação de aluguel?"},
+        {"role": ASSISTANT, "content": "Identifique o motivo da apelação no caso de locação de aluguel"},
+        {"role": USER, "content": "Quais foram os argumentos apresentados pelo apelante no caso trabalhista?"},
+        {"role": ASSISTANT, "content": "Liste os argumentos apresentados pelo apelante no caso trabalhista"},
+        {"role": USER, "content": "Qual foi a decisão do juiz em primeira instância no caso de locação de aluguel?"},
+        {"role": ASSISTANT, "content": "Descreva a decisão do juiz em primeira instância no caso de locação de aluguel"},
+        {"role": USER, "content": "Quais foram as provas apresentadas no caso trabalhista?"},
+        {"role": ASSISTANT, "content": "Identifique as provas apresentadas no caso trabalhista"},
+        {"role": USER, "content": "Qual foi o resultado da apelação no caso de locação de aluguel?"},
+        {"role": ASSISTANT, "content": "Informe o resultado da apelação no caso de locação de aluguel"}
+
     ]
     NO_RESPONSE = "0"
 
     follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
     Enclose the follow-up questions in double angle brackets. Example:
-    <<What resources are available to help me improve my knowledge of these contracts?>>
-    <<Could you elaborate on the responsibilities and obligations of each party as stated in this contract?>>
-    <<Is there a section in this contract that addresses dispute resolution?>>
+    <<Quais são os principais pontos de disputa na locação do imóvel?>>
+    <<Existem provas apresentadas que poderiam influenciar a decisão do tribunal no caso trabalhista?>>
+    <<Existem decisões judiciais anteriores semelhantes que podem influenciar o resultado deste caso?>>
     Make sure the last question ends with ">>".
     """
 
     query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
-    You have access to Azure AI Search index with various documents. The documents are public legal contracts relating to a variety of services and agreements.
+    You have access to Azure AI Search index with various documents. The documents are public legal documents relating to a variety of services and agreements.
     Generate a search query based on the conversation and the new question.
     Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
     Do not include any text inside [] or <<>> in the search query terms.
