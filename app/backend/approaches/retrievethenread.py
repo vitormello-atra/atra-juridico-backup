@@ -11,32 +11,33 @@ from core.messagebuilder import MessageBuilder
 
 class RetrieveThenReadApproach(Approach):
     """
-    Simple retrieve-then-read implementation, using the AI Search and OpenAI APIs directly. It first retrieves
-    top documents from search, then constructs a prompt with them, and then uses OpenAI to generate an completion
-    (answer) with that prompt.
+    Implementação simples de recuperação e leitura, usando as APIs de IA Search e OpenAI diretamente. Primeiro, ele recupera
+    os principais documentos da pesquisa, depois constrói um prompt com eles e, em seguida, usa o OpenAI para gerar uma conclusão
+    (resposta) com esse prompt.
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Atra employees with questions about a set of public legal contracts."
-        + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
-        + "Answer the following question using only the data provided in the sources below. "
-        + "For tabular information return it as an html table. Do not return markdown format. "
-        + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
-        + "If you cannot answer using the sources below, say you don't know. Use below example to answer"
+        "Você é um assistente inteligente ajudando os funcionários da Atra com perguntas sobre um conjunto de contratos legais públicos."
+        + "Use 'você' para se referir ao indivíduo que faz as perguntas, mesmo que elas sejam feitas com 'eu'."
+        + "Responda à seguinte pergunta usando apenas os dados fornecidos nas fontes abaixo."
+        + "Para informações tabulares, retorne-as como uma tabela HTML. Não retorne no formato markdown."
+        + "Cada fonte tem um nome seguido por dois pontos e a informação real, sempre inclua o nome da fonte para cada fato que você usar na resposta."
+        + "Se você não puder responder usando as fontes abaixo, diga que não sabe ou que não pode responder essa questão no momento."
+        + "Se a pergunta do usuário não esitver em Português, traduza-a para o Português. Forneça as respostas apenas em Português."
     )
 
     # shots/sample conversation
     question = """
-'What is the mean value of these contracts?'
+        'Qual é o valor médio desses contratos?'
 
-Sources:
-contrato1.pdf: This contract, effective from 30/11/2023 to 30/11/2024, is for services related to the receipt, storage, and final disposal of unusable tires in Sapezal-MT. The contract value is R$ 154,800.00.
-contrato2.pdf: This contract, based on Federal Law No. 14133 of April 1, is for the acquisition of items at a total cost of R$ 469,899.99. The payments for this contract will come from specific budgetary allocations.
-contrato3.pdf: This contract, which does not allow subcontracting, is for the provision of services at a total cost of R$ 663,500.00. The cost includes all direct and indirect expenses related to the execution of the contract.
-contrato4.pdf: This contract, resulting from the Waiver of Bidding No. 27/2024, is for specialized services for the preparation of reports, technical opinions in psychiatric and graphotechnic expertises. The total contract value is R$ 1,200.00. Payment will be made within 30 days of issuing the invoice.
-"""
+        Fontes:
+        contrato1.pdf: Este contrato, válido de 30/11/2023 a 30/11/2024, é para serviços relacionados ao recebimento, armazenamento e disposição final de pneus inutilizáveis em Sapezal-MT. O valor do contrato é de R$ 154.800,00.
+        contrato2.pdf: Este contrato, com base na Lei Federal nº 14133, de 1º de abril, é para aquisição de itens a um custo total de R$ 469.899,99. Os pagamentos deste contrato serão feitos a partir de alocações orçamentárias específicas.
+        contrato3.pdf: Este contrato, que não permite subcontratação, é para a prestação de serviços a um custo total de R$ 663.500,00. O custo inclui todas as despesas diretas e indiretas relacionadas à execução do contrato.
+        contrato4.pdf: Este contrato, resultante da Dispensa de Licitação nº 27/2024, é para serviços especializados de elaboração de laudos, pareceres técnicos em perícias psiquiátricas e grafotécnicas. O valor total do contrato é de R$ 1.200,00. O pagamento será feito em até 30 dias após a emissão da fatura.
+        """
 
-    answer = "The mean value of the contracts is R$ 322,349.99. This is calculated by adding the total values (R$ 154,800.00, R$ 469,899.99, R$ 663,500.00, R$ 1,200.00) and dividing by the number of contracts (4). Please note that this is a simplified calculation and may not take into account other factors that could affect the mean value of the contracts. It’s always a good idea to consult with a financial advisor or accountant for more accurate calculations."
+    answer = "O valor médio dos contratos é de R$ 322.349,99. Isso é calculado adicionando os valores totais (R$ 154.800,00, R$ 469.899,99, R$ 663.500,00, R$ 1.200,00) e dividindo pelo número de contratos (4). Por favor, note que este é um cálculo simplificado e pode não levar em consideração outros fatores que poderiam afetar o valor médio dos contratos. É sempre uma boa ideia consultar um consultor financeiro ou contador para cálculos mais precisos."
 
     def __init__(
         self,

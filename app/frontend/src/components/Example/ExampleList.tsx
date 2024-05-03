@@ -2,7 +2,7 @@ import { Example } from "./Example";
 
 import styles from "./Example.module.css";
 
-const DEFAULT_EXAMPLES: string[] = ["Existe alguma ação onde o locátorio foi multado?", "Existe alguma ação trabalhista que aborde insalubridade?", "Cite uma jurisprudência que possua danos morais?"];
+const DEFAULT_EXAMPLES: string[] = ["Existe alguma ação onde o locatário foi multado?", "Existe alguma ação trabalhista que aborde insalubridade?", "O que é uma Jurisprudência?"];
 
 const GPT4V_EXAMPLES: string[] = [
     "Me de 3 exemplos de causas trabalhistas?",

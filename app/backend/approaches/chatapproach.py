@@ -34,22 +34,22 @@ class ChatApproach(Approach, ABC):
     ]
     NO_RESPONSE = "0"
 
-    follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
-    Enclose the follow-up questions in double angle brackets. Example:
+    follow_up_questions_prompt_content = """<<Gere 3 perguntas de acompanhamento muito breves que o usuário provavelmente faria em seguida.
+    Inclua as perguntas de acompanhamento entre duplos sinais de ângulo. Exemplo:
     <<Quais são os principais pontos de disputa na locação do imóvel?>>
     <<Existem provas apresentadas que poderiam influenciar a decisão do tribunal no caso trabalhista?>>
     <<Existem decisões judiciais anteriores semelhantes que podem influenciar o resultado deste caso?>>
-    Make sure the last question ends with ">>".
+    Certifique-se de que a última pergunta termine com ">>".
     """
 
-    query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
-    You have access to Azure AI Search index with various documents. The documents are public legal documents relating to a variety of services and agreements.
-    Generate a search query based on the conversation and the new question.
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    Do not include any special characters like '+'.
-    If the question is not in English, translate the question to English before generating the search query.
-    If you cannot generate a search query, return just the number 0.
+    query_prompt_template = """Abaixo está o histórico da conversa até agora e uma nova pergunta feita pelo usuário que precisa ser respondida pesquisando em uma base de conhecimento.
+    Você tem acesso ao índice de pesquisa do Azure AI com vários documentos. Os documentos são documentos legais públicos relacionados a uma variedade de serviços e acordos.
+    Gere uma consulta de pesquisa com base na conversa e na nova pergunta.
+    Não inclua nomes de arquivos de origem citados e nomes de documentos, por exemplo, info.txt ou doc.pdf, nos termos da consulta de pesquisa.
+    Não inclua nenhum texto dentro de [] ou <<>> nos termos da consulta de pesquisa.
+    Não inclua nenhum caractere especial como '+'.
+    Se a pergunta não estiver em português, traduza a pergunta para o português antes de gerar a consulta de pesquisa.
+    Se você não puder gerar uma consulta de pesquisa, retorne apenas o número 0.
     """
 
     @property

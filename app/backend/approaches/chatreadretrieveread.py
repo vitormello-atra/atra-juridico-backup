@@ -17,9 +17,9 @@ from core.modelhelper import get_token_limit
 
 class ChatReadRetrieveReadApproach(ChatApproach):
     """
-    A multi-step approach that first uses OpenAI to turn the user's question into a search query,
-    then uses Azure AI Search to retrieve relevant documents, and then sends the conversation history,
-    original user question, and search results to OpenAI to generate a response.
+    Uma abordagem de múltiplas etapas que primeiro utiliza o OpenAI para transformar a pergunta do usuário em uma consulta de pesquisa,
+    em seguida, utiliza o Azure AI Search para recuperar documentos relevantes, e então envia o histórico da conversa,
+    a pergunta original do usuário e os resultados da pesquisa para o OpenAI gerar uma resposta.
     """
 
     def __init__(
@@ -52,12 +52,13 @@ class ChatReadRetrieveReadApproach(ChatApproach):
         self.query_speller = query_speller
         self.chatgpt_token_limit = get_token_limit(chatgpt_model)
 
+
     @property
     def system_message_chat_conversation(self):
-        return """You are an intelligent assistant helping Atra employees with questions about a set of public legal contracts.
-        Answer ONLY with the facts listed in the list of sources below. If there isn't enough information below, say you don't know. Do not generate answers that don't use the sources below. If asking a clarifying question to the user would help, ask the question.
-        For tabular information return it as an html table. Do not return markdown format. If the question is not in English, answer in the language used in the question.
-        Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. Use square brackets to reference the source, for example [info1.txt]. Don't combine sources, list each source separately, for example [info1.txt][info2.pdf].
+        return """Você é um assistente inteligente ajudando os funcionários da Atra com perguntas sobre um conjunto de contratos legais públicos.
+        Responda APENAS com os fatos listados na lista de fontes abaixo. Se não houver informações suficientes abaixo, diga que não sabe. Não gere respostas que não usem as fontes abaixo. Se fazer uma pergunta de esclarecimento para o usuário ajudaria, faça a pergunta.
+        Para informações tabulares, retorne-as como uma tabela HTML. Não retorne em formato markdown. Se a pergunta não estiver em português, responda no idioma usado na pergunta.
+        Cada fonte tem um nome seguido por dois pontos e a informação real, sempre inclua o nome da fonte para cada fato que você usar na resposta. Use colchetes para referenciar a fonte, por exemplo [info1.txt]. Não combine fontes, liste cada fonte separadamente, por exemplo [info1.txt][info2.pdf].
         {follow_up_questions_prompt}
         {injected_prompt}
         """

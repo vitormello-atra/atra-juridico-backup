@@ -214,7 +214,7 @@ export function Component(): JSX.Element {
                 </div>
             </div>
             <div className={styles.askBottomSection}>
-                {isLoading && <Spinner label="Generating answer" />}
+                {isLoading && <Spinner label="Gerando resposta" />}
                 {!lastQuestionRef.current && <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />}
                 {!isLoading && answer && !error && (
                     <div className={styles.askAnswerContainer}>
@@ -245,18 +245,18 @@ export function Component(): JSX.Element {
             </div>
 
             <Panel
-                headerText="Configure answer generation"
+                headerText="Configurar geração de resposta"
                 isOpen={isConfigPanelOpen}
                 isBlocking={false}
                 onDismiss={() => setIsConfigPanelOpen(false)}
-                closeButtonAriaLabel="Close"
-                onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>Close</DefaultButton>}
+                closeButtonAriaLabel="Fechar"
+                onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>Fechar</DefaultButton>}
                 isFooterAtBottom={true}
             >
                 <TextField
                     className={styles.askSettingsSeparator}
                     defaultValue={promptTemplate}
-                    label="Override prompt template"
+                    label="Sobrescrever template do prompt"
                     multiline
                     autoAdjustHeight
                     onChange={onPromptTemplateChange}
@@ -264,7 +264,7 @@ export function Component(): JSX.Element {
 
                 <Slider
                     className={styles.chatSettingsSeparator}
-                    label="Temperature"
+                    label="Temperatura"
                     min={0}
                     max={1}
                     step={0.1}
@@ -276,7 +276,7 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Minimum search score"
+                    label="Score minimo de pesquisa"
                     min={0}
                     step={0.01}
                     defaultValue={minimumSearchScore.toString()}
@@ -285,7 +285,7 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Minimum reranker score"
+                    label="Score minimo do reclassificador"
                     min={1}
                     max={4}
                     step={0.1}
@@ -295,19 +295,19 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Retrieve this many search results:"
+                    label="Recuperar quantos resultados de pesquisa:"
                     min={1}
                     max={50}
                     defaultValue={retrieveCount.toString()}
                     onChange={onRetrieveCountChange}
                 />
-                <TextField className={styles.askSettingsSeparator} label="Exclude category" onChange={onExcludeCategoryChanged} />
+                <TextField className={styles.askSettingsSeparator} label="Excluir categoria" onChange={onExcludeCategoryChanged} />
 
                 {showSemanticRankerOption && (
                     <Checkbox
                         className={styles.askSettingsSeparator}
                         checked={useSemanticRanker}
-                        label="Use semantic ranker for retrieval"
+                        label="Usar o classificador semântico"
                         onChange={onUseSemanticRankerChange}
                     />
                 )}
@@ -315,7 +315,7 @@ export function Component(): JSX.Element {
                 <Checkbox
                     className={styles.askSettingsSeparator}
                     checked={useSemanticCaptions}
-                    label="Use query-contextual summaries instead of whole documents"
+                    label="Usar resumos contextuais de consulta em vez de documentos inteiros"
                     onChange={onUseSemanticCaptionsChange}
                     disabled={!useSemanticRanker}
                 />
