@@ -85,8 +85,8 @@ class RetrieveThenReadApproach(Approach):
 
         use_semantic_captions = True if overrides.get("semantic_captions") and has_text else False
         top = overrides.get("top", 3)
-        minimum_search_score = overrides.get("minimum_search_score", 0.030)
-        minimum_reranker_score = overrides.get("minimum_reranker_score", 3.0)
+        minimum_search_score = overrides.get("minimum_search_score", 0.025)
+        minimum_reranker_score = overrides.get("minimum_reranker_score", 2.5)
         filter = self.build_filter(overrides, auth_claims)
         # If retrieval mode includes vectors, compute an embedding for the query
         vectors: list[VectorQuery] = []
@@ -128,7 +128,7 @@ class RetrieveThenReadApproach(Approach):
                 # Azure OpenAI takes the deployment name as the model name
                 model=self.chatgpt_deployment if self.chatgpt_deployment else self.chatgpt_model,
                 messages=updated_messages,
-                temperature=overrides.get("temperature", 0.3),
+                temperature=overrides.get("temperature", 0.0),
                 max_tokens=1024,
                 n=1,
             )
